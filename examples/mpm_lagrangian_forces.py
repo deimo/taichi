@@ -1,7 +1,7 @@
 import taichi as ti
 import numpy as np
 
-ti.init(arch=ti.gpu)
+ti.init(arch=ti.gpu, kernel_profiler=True)
 
 dim = 2
 n_particle_x = 100
@@ -180,6 +180,7 @@ def main():
         gui.circles(particle_pos, radius=1.5, color=0xF2B134)
         gui.line((0.00, 0.03), (1.0, 0.03), color=0xFFFFFF, radius=3)
         gui.show()
+        ti.kernel_profiler_print()
 
 
 if __name__ == '__main__':
